@@ -1,10 +1,10 @@
 #!/bin/bash
 
-utilisateur="<utilisateur>"
-mdp='<mot de passe>'
-serveur="<serveur>"
+utilisateur="<utilisateur>>"
+mdp="$(python -c "import keyring; print keyring.get_password('ad', '${utilisateur}')")"
+serveur="<ad>"
 # wget compilé avec support de NTLM
-wget_bin=${LOCAL_BIN}/wget/bin/wget
+wget_bin=/home/yann/bin/wget/bin/wget
 
 nom=$(cat /dev/null | dmenu -b -p "Nom : ")
 
